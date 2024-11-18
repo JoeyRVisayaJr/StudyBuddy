@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/studyBudyNav.css" />
+    @RenderSection("Styles", required: false)
+</head>
+
+<body>
+    <div class="header">
+        <div class="left-header">
+            <button class="burger-btn" onclick="toggleSidebar()">☰</button>
+            <img src="~/images/logo.png" alt="logo"/>
+            <h1> TUDY BUDDY</h1>
+        </div>
+        <div class="right-header">
+            <img src="~/images/logo.png" alt="user-icon"/>
+        </div>
+    </div>
+    <div class="main-container">
+            <div class="sidebar-content">
+                <ul>
+                    <li><a href="/Home/IndexStudyBuddy">Home</a></li>
+                    @if (ViewBag.ShowSpecialItem == true)
+                    {
+                    <li><a href="/Home/IndexStudyBuddyPage2">Special Item</a></li>
+                    }
+                    <li><a href="/Home/IndexStudyBuddyPage2">Profile</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </div>
+        <div class="body">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar-content');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
